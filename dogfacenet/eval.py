@@ -21,14 +21,14 @@ from online_training import *
 #----------------------------------------------------------------------------
 # Config.
 
-PATH        = '../data/dogfacenet/aligned/after_4_bis/' # Path to the directory of the saved dataset
-PATH_SAVE   = '../output/history/'                      # Path to the directory where the history will be stored
-PATH_MODEL  = '../output/model/2019.04.22 - best/'      # Path to the directory where the model will be stored
+PATH        = 'data' # Path to the directory of the saved dataset
+PATH_SAVE   = '../output/history/2025.07.20/'                      # Path to the directory where the history will be stored
+PATH_MODEL  = '../output/model/2025.07.20/'      # Path to the directory where the model will be stored
 SIZE        = (224,224,3)                               # Size of the input images
-TEST_SPLIT  = 0.1                                       # Train/test ratio
+TEST_SPLIT  = 0.2                                       # Train/test ratio
 
-NET_NAME    = '2019.04.22.dogfacenet_v26'               # Network saved name
-START_EPOCH = 282                                       # Start the training at a specified epoch
+NET_NAME    = '2025.07.20.dogfacenet_v1'               # Network saved name
+START_EPOCH = 1                                       # Start the training at a specified epoch
 
 #----------------------------------------------------------------------------
 # Import the dataset.

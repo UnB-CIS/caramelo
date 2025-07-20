@@ -257,7 +257,7 @@ def predict_generator(filenames, batch_size=32):
     """
     for i in range(0,len(filenames),batch_size):
         images_batch = load_images(filenames[i:i+batch_size])
-        yield images_batch
+        yield (images_batch,)
 
 def online_hard_image_generator(
     filenames,
@@ -325,8 +325,8 @@ def online_adaptive_hard_image_generator(
             keep_classes = np.logical_or(keep_classes,np.equal(labels,subclasses[i]))
         subfilenames = filenames[keep_classes]
         sublabels = labels[keep_classes]
-        predict = model.predict_generator(predict_generator(subfilenames, 32),
-                                          steps=int(np.ceil(len(subfilenames)/32)))
+        predict = model.predict(predict_generator(subfilenames, 32),
+                                steps=int(np.ceil(len(subfilenames)/32)))
         
         
         
