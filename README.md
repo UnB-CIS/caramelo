@@ -35,25 +35,12 @@ As previously described, the stable version is in dogfacenet/dogfacenet.py. It c
 * the model definition and training
 * the model evaluation (still in development)
 
-The dogfacenet-dev folder contains the developer version of the code. Model evaluation (verification, recognition, clustering, ROC curve, observation on the heatmap, ...) is in developer folder. It will be transfer in stable folder soon. The main dev version is in dogfacenet-dev/dogfacenet_v12-dev.ipynb jupyter notebook file.
-
 The rest of the project contains:
 
 * (data: the images of the project) not available right now...
 * dogfacenet: stable version of the DogFaceNet project.
     * dogfacenet: dataset loading, model definiton and training
     * offline/online_training: function for triplet generation
-* dogfacenet-dev: the main part, it contains the code on dog face verification and on face alignment (in dogfacenet/labelizer).
-    * labelizer: contains the data-preprocessing function after labeling the images using VIA
-        * copy_images: copies the images from the output folder of VIA to the input folder of DogFaceNet
-        * transform_csv_to_clean_format: edits the output csv file from VIA to a adapted format
-        * align_face: aligns copied faces using the edited csv file
-    * dogfacenet-*dataset*: different tries on different dataset 
-    * dogfacenet_v*version_number*: the different version of the code on dog pictures
-    * triplet_preprocessing: triplets linked functions
-        * triplets definition
-        * triplets augmentation
-        * hard triplets definition
 * output:
     * (model: the trained models not available right now...)
     * history: the convergence curves
