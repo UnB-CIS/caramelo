@@ -19,7 +19,7 @@ import tensorflow as tf
 import os
 import numpy as np
 import skimage as sk
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import tensorflow.keras.backend as K # type: ignore
 from online_training import *
 
@@ -125,10 +125,6 @@ else:
     from tensorflow.keras.layers import Input, Conv2D, MaxPooling2D, Add, GlobalAveragePooling2D # type: ignore
     from tensorflow.keras.layers import Dropout, Flatten, Dense, Lambda, BatchNormalization # type: ignore
 
-    """
-    Model number 12: Paper version: a modified ResNet with Dropout layers and without bottleneck layers
-    """
-
     print('Defining model {:s} ...'.format(NET_NAME))
 
     emb_size = 32
@@ -157,7 +153,7 @@ else:
     x = Flatten()(x)
     x = Dropout(0.5)(x)
     x = Dense(emb_size, use_bias=False)(x)
-    outputs = Lambda(lambda x: tf.nn.l2_normalize(x,axis=-1))(x)
+    outputs = Lambda(lambda x: tf.nn.l2_normalize(x,axis=-1), output_shape=(1, emb_size))(x)
 
     model = tf.keras.Model(inputs,outputs)
 

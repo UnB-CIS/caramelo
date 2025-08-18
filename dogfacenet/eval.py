@@ -23,7 +23,7 @@ from online_training import *
 
 PATH        = 'data' # Path to the directory of the saved dataset
 PATH_SAVE   = '../output/history/2025.07.20/'                      # Path to the directory where the history will be stored
-PATH_MODEL  = '../output/model/2025.07.20/'      # Path to the directory where the model will be stored
+PATH_MODEL  = '../output/model/2025.07.20/'      # Path to the directory where the moskdel will be stored
 SIZE        = (224,224,3)                               # Size of the input images
 TEST_SPLIT  = 0.2                                       # Train/test ratio
 
@@ -138,7 +138,7 @@ for i in range(NBOF_PAIRS):
         images_class1 = filenames_test[np.equal(labels_test,class1)]
         images_class2 = filenames_test[np.equal(labels_test,class2)]
         
-        # Chose an image amoung these selected images
+        # Chose an image among these selected images
         pairs = pairs + [images_class1[np.random.randint(len(images_class1))]]
         pairs = pairs + [images_class2[np.random.randint(len(images_class2))]]
         issame[i] = 0
