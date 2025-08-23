@@ -18,24 +18,22 @@ import tensorflow as tf
 
 import os
 import numpy as np
-import skimage as sk
-# import matplotlib.pyplot as plt
-import tensorflow.keras.backend as K # type: ignore
+import tensorflow.keras.backend as K
 from online_training import *
 
 #----------------------------------------------------------------------------
 # Config.
 
-PATH        = 'data/'                                # Path to the directory of the saved dataset
-PATH_SAVE   = 'output/history/'                      # Path to the directory where the history will be stored
-PATH_MODEL  = 'output/model/2025.07.20/'             # Path to the directory where the model will be stored
+PATH        = '../data/'                                # Path to the directory of the saved dataset
+PATH_SAVE   = '../output/history/'                      # Path to the directory where the history will be stored
+PATH_MODEL  = '../output/model/2025.08.19/'             # Path to the directory where the model will be stored
 SIZE        = (224,224,3)                               # Size of the input images
 TEST_SPLIT  = 0.1                                       # Train/test ratio
 
 LOAD_NET    = False                                     # Load a network from a saved model? If True NET_NAME and START_EPOCH have to be precised
-NET_NAME    = '2025.07.20.dogfacenet'                   # Network saved name
+NET_NAME    = '2025.08.19.dogfacenet'                   # Network saved name
 START_EPOCH = 0                                         # Start the training at a specified epoch
-NBOF_EPOCHS = 1                                       # Number of epoch to train the network
+NBOF_EPOCHS = 1                                         # Number of epoch to train the network
 HIGH_LEVEL  = True                                      # Use high level training ('fit' keras method)
 STEPS_PER_EPOCH = 300                                   # Number of steps per epoch
 VALIDATION_STEPS = 30                                   # Number of steps per validation
@@ -153,7 +151,7 @@ else:
     x = Flatten()(x)
     x = Dropout(0.5)(x)
     x = Dense(emb_size, use_bias=False)(x)
-    outputs = Lambda(lambda x: tf.nn.l2_normalize(x,axis=-1), output_shape=(1, emb_size))(x)
+    outputs = Lambda(lambda x: K.l2_normalize(x,axis=-1), output_shape=(1, emb_size))(x)
 
     model = tf.keras.Model(inputs,outputs)
 

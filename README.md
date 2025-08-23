@@ -2,48 +2,74 @@
 
 This code is an implementation of a deep learning method for dog identification. It relies on the triplet loss defined in FaceNet paper and on novel deep learning techniques as ResNet networks.
 
-Dog faces pictures were retrieved from the web and aligned using three handmade labels. We used VIA tool to label the images. The dataset is available here: [Zenodo](https://zenodo.org/records/12578449)
-
-### Dataset
-
-The complete dataset is now available on [Zenodo](https://zenodo.org/records/12578449).
+Dog faces pictures were retrieved from the web and aligned using three handmade labels. The dataset is available here: [Zenodo](https://zenodo.org/records/12578449)
 
 ### Run the recognition algorithm
 
-To run the code you will need:
-* python >= 3.6.4
-* tensorflow == 1.12.0 (this constraint will be improved)
-* numpy >= 1.14.0
-* matplotlib >= 2.1.2
-* scikit-image >= 0.13.1
-* jupyter >= 1.0.0 (optional: only for dev)
-* tqdm >= 4.23.4 (optional: only for dev)
+To create a virtual environment, run:
+
+```bash
+python -m venv venv
+```
+
+Then activate it:
+
+On Linux/Mac:
+```bash
+source venv/bin/activate
+```
+
+On Windows:
+```bash
+venv\Scripts\activate
+```
+
+After creating a virtual environment, the dependencies should be installed with:
+
+```bash
+pip install -r requirements.txt
+```
 
 Then run the following command from the root directory of the project:
 
-    python dogfacenet/dogfacenet.py
+```bash
+python dogfacenet/dogfacenet.py
+```
 
 To run properly the dataset has to be located in a data/dogfacenet folder or you will have to edit the config part of the dogfacenet.py file.
 
 The above command will train a model and save it into output/model directory. It will also save its history in output/history.
 
-### Content
+### Contents
 
-As previously described, the stable version is in dogfacenet/dogfacenet.py. It contains:
+This project is organized as follows:
 
-* the online and offline training modules
-* the model definition and training
-* the model evaluation (still in development)
+```
+dogs_recognition/
+├── data/
+├── doc/
+├── dogfacenet/
+│   ├── __init__.py
+│   ├── dogfacenet.py
+│   ├── offline_training.py
+│   └── online_training.py
+├── output/
+│   ├── model/
+│   └── history/
+├── requirements.txt
+└── README.md
+```
+
+The stable version of the DogFaceNet is located at the dogfacenet folder. The files are arranged as the following:
+
+* dogfacenet: dataset loading, model definiton and training
+* offline/online_training: function for triplet generation
 
 The rest of the project contains:
 
-* (data: the images of the project) not available right now...
-* dogfacenet: stable version of the DogFaceNet project.
-    * dogfacenet: dataset loading, model definiton and training
-    * offline/online_training: function for triplet generation
 * output:
-    * (model: the trained models not available right now...)
-    * history: the convergence curves
+    * model: the trained models
+    * history: the convergence curves and training history
 
 ### References
 

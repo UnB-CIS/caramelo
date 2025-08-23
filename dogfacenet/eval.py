@@ -16,19 +16,20 @@ import numpy as np
 import skimage as sk
 import matplotlib.pyplot as plt
 import tensorflow.keras.backend as K
+import tensorflow as tf
 from online_training import *
 
 #----------------------------------------------------------------------------
 # Config.
 
-PATH        = 'data' # Path to the directory of the saved dataset
-PATH_SAVE   = '../output/history/2025.07.20/'                      # Path to the directory where the history will be stored
-PATH_MODEL  = '../output/model/2025.07.20/'      # Path to the directory where the moskdel will be stored
-SIZE        = (224,224,3)                               # Size of the input images
-TEST_SPLIT  = 0.2                                       # Train/test ratio
+PATH        = '../data/'                                        # Path to the directory of the saved dataset
+PATH_SAVE   = '../output/history/2025.08.19.dogfacenet.0.npy'   # Path to the directory where the history will be stored
+PATH_MODEL  = '../output/model/2025.08.19/'                     # Path to the directory where the model will be stored
+SIZE        = (224,224,3)                                       # Size of the input images
+TEST_SPLIT  = 0.2                                               # Train/test ratio
 
-NET_NAME    = '2025.07.20.dogfacenet_v1'               # Network saved name
-START_EPOCH = 1                                       # Start the training at a specified epoch
+NET_NAME    = '2025.08.19.dogfacenet'                           # Network saved name
+START_EPOCH = 0                                                 # Start the training at a specified epoch
 
 #----------------------------------------------------------------------------
 # Import the dataset.
@@ -165,7 +166,7 @@ print('Done.')
 
 print('Verification task, model evaluation...')
 
-predict=model.predict_generator(predict_generator(pairs, 32), steps=np.ceil(len(pairs)/32))
+predict=model.predict(predict_generator(pairs, 32), steps=int(np.ceil(len(pairs)/32)))
 # Separates the pairs
 emb1 = predict[0::2]
 emb2 = predict[1::2]
