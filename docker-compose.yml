@@ -1,0 +1,19 @@
+services:
+  jupyter:
+    build: .
+    container_name: caramelo-jupyter
+    ports:
+      - "8888:8888"
+    volumes:
+      - .:/app
+      - ./data:/app/data
+      - ./notebooks:/app/notebooks
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    restart: unless-stopped
+    networks:
+      - caramelo-network
+
+networks:
+  caramelo-network:
+    driver: bridge
