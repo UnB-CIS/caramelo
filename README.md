@@ -40,37 +40,8 @@ To run properly the dataset has to be located in a data/dogfacenet folder or you
 
 The above command will train a model and save it into output/model directory. It will also save its history in output/history.
 
-### Contents
-
-This project is organized as follows:
-
-```
-dogs_recognition/
-├── data/
-├── doc/
-├── dogfacenet/
-│   ├── __init__.py
-│   ├── dogfacenet.py
-│   ├── offline_training.py
-│   └── online_training.py
-├── output/
-│   ├── model/
-│   └── history/
-├── requirements.txt
-└── README.md
-```
-
-The stable version of the DogFaceNet is located at the dogfacenet folder. The files are arranged as the following:
-
-* dogfacenet: dataset loading, model definiton and training
-* offline/online_training: function for triplet generation
-
-The rest of the project contains:
-
-* output:
-    * model: the trained models
-    * history: the convergence curves and training history
-
 ### References
 
 This repository is based on the first implementation of the dogFaceNet, by [Guillaume Mougeot](https://github.com/GuillaumeMougeot), wich is provided by [this link](https://github.com/GuillaumeMougeot/DogFaceNet)
+
+The structure of the project is based on [*pyimagesearch*'s](https://pyimagesearch.com/2023/01/09/face-recognition-with-siamese-networks-keras-and-tensorflow/) tutorial on siamese networks.
