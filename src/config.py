@@ -2,6 +2,7 @@ import tensorflow as tf
 import os
 
 # path to training and testing data
+DATASET_PATH = "data"
 TRAIN_DATASET = "data/train"
 TEST_DATASET = "data/test"
 
