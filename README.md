@@ -30,15 +30,31 @@ After creating a virtual environment, the dependencies should be installed with:
 pip install -r requirements.txt
 ```
 
-Then run the following command from the root directory of the project:
+Then run the appropriate command from the root directory of the project:
 
+**For training:**
 ```bash
-python dogfacenet/dogfacenet.py
+python train.py
 ```
 
-To run properly the dataset has to be located in a data/dogfacenet folder or you will have to edit the config part of the dogfacenet.py file.
+**For testing:**
+```bash
+python test.py
+```
 
-The above command will train a model and save it into output/model directory. It will also save its history in output/history.
+**For evaluation:**
+```bash
+python evaluation.py
+```
+
+**For inference:**
+```bash
+python inference.py
+```
+
+To run properly the dataset has to be located in a data/dogfacenet folder or you will have to edit the config part of the respective files.
+
+The training command will train a model and save it into output/model directory. It will also save its history in output/history.
 
 ### References
 
