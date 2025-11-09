@@ -54,6 +54,7 @@ class SiameseModel(keras.Model):
         self.siameseNetwork = siameseNetwork
         self.margin = margin
         self.lossTracker = lossTracker
+
     def _compute_distance(self, inputs):
         (anchor, positive, negative) = inputs
         # embed the images using the siamese network
@@ -71,15 +72,18 @@ class SiameseModel(keras.Model):
         
         # return the distances
         return (apDistance, anDistance)
+    
     def _compute_loss(self, apDistance, anDistance):
         loss = apDistance - anDistance
         loss = tf.maximum(loss + self.margin, 0.0)
         return loss
+    
     def call(self, inputs):
         # compute the distance between the anchor and positive,
         # negative images
         (apDistance, anDistance) = self._compute_distance(inputs)
         return (apDistance, anDistance)
+    
     def train_step(self, inputs):
         with tf.GradientTape() as tape:
             # compute the distance between the anchor and positive,
@@ -87,6 +91,7 @@ class SiameseModel(keras.Model):
             (apDistance, anDistance) = self._compute_distance(inputs)
             # calculate the loss of the siamese network
             loss = self._compute_loss(apDistance, anDistance)
+        
         # compute the gradients and optimize the model
         gradients = tape.gradient(
             loss,
@@ -97,6 +102,7 @@ class SiameseModel(keras.Model):
         # update the metrics and return the loss
         self.lossTracker.update_state(loss)
         return {"loss": self.lossTracker.result()}
+    
     def test_step(self, inputs):
         # compute the distance between the anchor and positive,
         # negative images
@@ -107,6 +113,7 @@ class SiameseModel(keras.Model):
         # update the metrics and return the loss
         self.lossTracker.update_state(loss)
         return {"loss": self.lossTracker.result()}
+    
     @property
     def metrics(self):
         return [self.lossTracker]
