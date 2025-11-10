@@ -99,6 +99,7 @@ accuracy = (ground_truth == predictions).sum() / N
 cm = confusion_matrix(ground_truth, predictions)
 recall = np.diag(cm) / np.sum(cm, axis = 1)
 precision = np.diag(cm) / np.sum(cm, axis = 0)
+precision = np.nan_to_num(precision, nan=0.0)
 recallOverall = np.mean(recall)
 precisionOverall = np.mean(precision)
 F1_overall = 2*recallOverall*precisionOverall/(recallOverall+precisionOverall)
